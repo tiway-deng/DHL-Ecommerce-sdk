@@ -7,5 +7,10 @@
             "email": "501620409@qq.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Tiway\\DhlEcommerce\\": "src/"
+        }
+    },
     "require": {}
 }
