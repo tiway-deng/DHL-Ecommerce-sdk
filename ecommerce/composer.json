@@ -1,0 +1,11 @@
+{
+    "name": "tiway/ecommerce",
+    "description": "dhl ecommerce",
+    "authors": [
+        {
+            "name": "tiway",
+            "email": "501620409@qq.com"
+        }
+    ],
+    "require": {}
+}
