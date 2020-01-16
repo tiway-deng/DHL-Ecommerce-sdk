@@ -1,6 +1,6 @@
 {
     "name": "tiway/dhl-ecommerce-sdk",
-    "description": "dhl ecommerce",
+    "description": "E-Commerce Express api sdk This package supports #create label, #reprint label,#tracking",
     "authors": [
         {
             "name": "tiway",
