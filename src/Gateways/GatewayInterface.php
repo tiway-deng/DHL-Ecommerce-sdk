@@ -2,8 +2,16 @@
 
 namespace Tiway\DhlEcommerce\Gateways;
 
-
+/**
+ * Interface GatewayInterface
+ * @package Tiway\DhlEcommerce\Gateways
+ */
 interface GatewayInterface
 {
-    public function execute();
+    /**
+     * gateway execute
+     * @Date: 2020/1/16
+     * @return mixed
+     */
+    public function execute($payLoad);
 }

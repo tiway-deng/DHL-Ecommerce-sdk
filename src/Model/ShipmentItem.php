@@ -4,7 +4,7 @@ namespace Tiway\DhlEcommerce\Model;
 
 use Tiway\DhlEcommerce\Common\EcommerceModel;
 
-class ShipmentItems extends EcommerceModel
+class ShipmentItem extends EcommerceModel
 {
     //    //收件人地址详情
     //    private $consigneeAddress;

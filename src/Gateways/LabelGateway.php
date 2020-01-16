@@ -5,23 +5,33 @@ namespace Tiway\DhlEcommerce\Gateways;
 
 
 use Tiway\DhlEcommerce\Common\EcommerceResourceModel;
-use Tiway\DhlEcommerce\Contracts\GatewayInterface;
 use Tiway\DhlEcommerce\Core\ApiContext;
 
 class LabelGateway extends EcommerceResourceModel implements GatewayInterface
 {
-    private $path = '/rest/v2/Label';
+    /**
+     * label path
+     * @var string
+     */
+    private $_path = '/rest/v2/Label';
 
-    protected $apiContext;
-
+    /**
+     * LabelGateway constructor.
+     * @param ApiContext $apiContext
+     */
     public function __construct(ApiContext $apiContext) {
         $this->apiContext = $apiContext;
     }
 
-    public function execute() {
-        $payLoad = $this->toJSON();
+    /**
+     * Execute SDK Call to get label
+     * @Date: 2020/1/16
+     * @return bool|mixed|string
+     * @throws \Tiway\DhlEcommerce\Exception\EcommerceException
+     */
+    public function execute($payLoad) {
         $result = self::executeCall(
-            $this->path,
+            $this->_path,
             self::HTTP_POST,
             $payLoad,
             [],

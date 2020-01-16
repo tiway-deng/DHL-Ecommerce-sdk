@@ -8,19 +8,17 @@ use Tiway\DhlEcommerce\Exception\EcommerceException;
 
 class EcommerceRestCall
 {
-    private $apiContext;
+    private $_apiContext;
 
-    public function __construct(ApiContext $apiContext)
-    {
-        $this->apiContext = $apiContext;
+    public function __construct(ApiContext $apiContext) {
+        $this->_apiContext = $apiContext;
     }
 
-    public function execute($path, $method, $data = '', $headers = [])
-    {
+    public function execute($path, $method, $data = '', $headers = []) {
         if (is_array($data)) {
             $data = json_encode($data,true);
         }
-        $host = $this->apiContext->getHost();
+        $host = $this->_apiContext->getHost();
         $headerArray = array_merge(["Content-type:application/json;","Accept:application/json"],$headers);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $host.$path);

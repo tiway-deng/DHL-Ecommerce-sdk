@@ -9,20 +9,30 @@ use Tiway\DhlEcommerce\Core\ApiContext;
 
 class TokenGateway extends EcommerceResourceModel implements GatewayInterface
 {
-    private $path = '/rest/v1/OAuth/AccessToken';
+    /**
+     * label token path
+     * @var string
+     */
+    private $_path = '/rest/v1/OAuth/AccessToken';
 
-    protected $apiContext;
-
+    /**
+     * TokenGateway constructor.
+     * @param ApiContext $apiContext
+     */
     public function __construct(ApiContext $apiContext) {
         $this->apiContext = $apiContext;
         $config = $this->apiContext->getConfig();
-        $this->path .= '?clientId=' . $config['clientId'] . '&password=' . $config['password'] . '&returnFormat=json';
+        $this->_path .= '?clientId=' . $config['clientId'] . '&password=' . $config['password'] . '&returnFormat=json';
     }
 
-    public function execute() {
-        $payLoad = $this->toJSON();
+    /**
+     * Execute SDK Call to get token
+     * @return bool|mixed|string
+     * @throws \Tiway\DhlEcommerce\Exception\EcommerceException
+     */
+    public function execute($payLoad) {
         $result = self::executeCall(
-            $this->path,
+            $this->_path,
             self::HTTP_GET,
             $payLoad,
             [],

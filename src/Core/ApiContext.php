@@ -13,7 +13,7 @@ class ApiContext
     //生产
     const PRO_HOST = "https://api.dhlecommerce.dhl.com";
 
-    private $is_pro = false;
+    private $_isPro = false;
 
     private $config = [
         'clientId'        => 'LTEzMDQ3ODk4NA==',
@@ -24,17 +24,15 @@ class ApiContext
 
     private $host;
 
-    public function __construct($is_pro = false)
-    {
-        $this->is_pro = $is_pro;
+    public function __construct($isPro = false) {
+        $this->_isPro = $isPro;
         $this->host = self::SANDBOX_HOST;
-        if ($is_pro) {
+        if ($isPro) {
             $this->host = self::PRO_HOST;
         }
     }
 
-    public function setConfig($config)
-    {
+    public function setConfig($config) {
         //修改配置
         $this->config = $config;
         return $this;
@@ -49,7 +47,7 @@ class ApiContext
     }
 
     public function isPro() {
-        return $this->is_pro;
+        return $this->_isPro;
     }
 
 }

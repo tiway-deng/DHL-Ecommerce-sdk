@@ -181,6 +181,7 @@ class EcommerceService extends ExpressBaseService
             $request->setHdr($hdr)->setBd($bd);
             $label_request = new LabelReprintRequest();
             $label_request->setLabelReprintRequest($request);
+            dd($request->toArray());
 
             //请求物流
             self::$log->info('ecommerce 标签获取请求参数：',['request'=>$label_request->toArray()]);

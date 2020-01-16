@@ -10,18 +10,28 @@ use Tiway\DhlEcommerce\Core\ApiContext;
 
 class TrackingGateway extends EcommerceResourceModel implements GatewayInterface
 {
-    private $path = '/rest/v2/Tracking';
+    /**
+     * tracking path
+     * @var string
+     */
+    private $_path = '/rest/v2/Tracking';
 
-    protected $apiContext;
-
+    /**
+     * TrackingGateway constructor.
+     * @param ApiContext $apiContext
+     */
     public function __construct(ApiContext $apiContext) {
         $this->apiContext = $apiContext;
     }
 
-    public function execute() {
-        $payLoad = $this->toJSON();
+    /**
+     * Execute SDK Call to get tracking
+     * @return bool|mixed|string
+     * @throws \Tiway\DhlEcommerce\Exception\EcommerceException
+     */
+    public function execute($payLoad) {
         $result = self::executeCall(
-            $this->path,
+            $this->_path,
             self::HTTP_POST,
             $payLoad,
             [],

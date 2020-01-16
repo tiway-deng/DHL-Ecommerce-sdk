@@ -5,14 +5,19 @@ namespace Tiway\DhlEcommerce\Gateways;
 
 
 use Tiway\DhlEcommerce\Common\EcommerceResourceModel;
-use Tiway\DhlEcommerce\Contracts\GatewayInterface;
 use Tiway\DhlEcommerce\Core\ApiContext;
 
+/**
+ * Class ReprintGateway
+ * @package Tiway\DhlEcommerce\Gateways
+ */
 class ReprintGateway extends EcommerceResourceModel implements GatewayInterface
 {
-    private $path = '/rest/v2.Label.Reprint';
-
-    protected $apiContext;
+    /**
+     * label label reprint path
+     * @var string
+     */
+    private $_path = '/rest/v2.Label.Reprint';
 
     public function __construct(ApiContext $apiContext) {
         $this->apiContext = $apiContext;
@@ -21,10 +26,14 @@ class ReprintGateway extends EcommerceResourceModel implements GatewayInterface
         }
     }
 
-    public function execute() {
-        $payLoad = $this->toJSON();
+    /**
+     * Execute SDK Call to get label reprint
+     * @return bool|mixed|string
+     * @throws \Tiway\DhlEcommerce\Exception\EcommerceException
+     */
+    public function execute($payLoad) {
         $result = self::executeCall(
-            $this->path,
+            $this->_path,
             self::HTTP_POST,
             $payLoad,
             [],
