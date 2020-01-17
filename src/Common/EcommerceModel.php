@@ -66,7 +66,11 @@ class EcommerceModel
         $ret = [];
         foreach ($param as $k => $v) {
             if ($v instanceof EcommerceModel) {
-                $ret[$k] = $v->toArray();
+                if ($k == 'items') {
+                    $ret[] = $v->toArray();
+                }else{
+                    $ret[$k] = $v->toArray();
+                }
             } else if (sizeof($v) <= 0 && is_array($v)) {
                 $ret[$k] = [];
             } else if (is_array($v)) {
